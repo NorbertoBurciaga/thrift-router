@@ -43,16 +43,16 @@ sudo apt install perl git-all gcc g++ flex bison make cmake autoconf automake li
 
 ```console
 Download latest version from: https://dl.bintray.com/boostorg/release/
-$ wget https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz
-$ tar xvf boost_1_69_0.tar.gz
-$ cd boost_1_69_0/
-boost_1_69_0$ sudo ./bootstrap.sh --prefix=/usr/local
+$ wget https://dl.bintray.com/boostorg/release/1.74.0/source/boost_1_74_0.tar.gz
+$ tar xvf boost_1_74_0.tar.gz
+$ cd boost_1_74_0/
+boost_1_74_0$ sudo ./bootstrap.sh --prefix=/usr/local
 Set the use of MPI
-boost_1_69_0$ user_configFile=`find $PWD -name user-config.jam`
-boost_1_69_0$ echo $user_configFile
-boost_1_69_0/tools/build/example/user-config.jam
-boost_1_69_0$ echo "using mpi;" >> $user_configFile
-boost_1_69_0$ sudo ./b2 install
+boost_1_74_0$ user_configFile=`find $PWD/libs -name user-config.jam`
+boost_1_74_0$ echo $user_configFile
+boost_1_74_0/tools/build/example/user-config.jam
+boost_1_74_0$ echo "using mpi;" >> $user_configFile
+boost_1_74_0$ sudo ./b2 install
 ```
 
 #### Install Apache Thrift
@@ -60,9 +60,10 @@ boost_1_69_0$ sudo ./b2 install
 ```console
 $ git clone https://github.com/apache/thrift.git
 $ ./bootstrap.sh
-$ ./configure --with-boost=/usr/local --without-ruby
+$ ./configure --with-boost=/usr/local --without-ruby --without-python --without-py3
 $ make
 $ make -k check
+$ sudo make install
 ```
 
 #### Install project
